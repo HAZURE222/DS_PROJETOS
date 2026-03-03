@@ -23,3 +23,17 @@
 </div>
 
 ---
+
+
+
+## 📜 Licença
+
+Projeto desenvolvido para fins **educacionais** como TCC do curso técnico de Desenvolvimento de Sistemas.
+
+---
+
+<div align="center">
+
+Feito com 💙 pelos alunos da **Escola Estadual Carmina Mendes**
+
+</div>
