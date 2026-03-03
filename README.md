@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎓 [NOME DO SISTEMA]
+# 🎓 [3 D.S]
 ### Trabalho de Conclusão de Curso — 3º Ano | Desenvolvimento de Sistemas
 
 <img src="https://img.shields.io/badge/status-Em%20Desenvolvimento-yellow?style=for-the-badge" />
