@@ -8,7 +8,7 @@
 <img src="https://img.shields.io/badge/curso-Desenvolvimento%20de%20Sistemas-purple?style=for-the-badge" />
 
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias que Estudamos
 
 <div align="center">
 
