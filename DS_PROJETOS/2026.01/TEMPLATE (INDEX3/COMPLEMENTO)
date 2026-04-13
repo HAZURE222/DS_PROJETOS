@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Raphael's Products</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body id="body">
+        <div>
+            <a href=""><button id="btn1" href="">Clique Aqui!</button></a>
+            <a href=""><button id="btn2" href="">Clique Aqui!!</button></a>
+        </div>
+        <div>
+            <a href=""><button id="btn3">Clique Aqui!!!</button></a>
+            <a href=""><button id="btn4">Clique Aqui!!!!</button></a>
+        </div>
+            <style>
+            #body {
+                background-image: url(./IMG/pexels-adrien-olichon-1257089-2387532.jpg);
+            }
+            #btn1 {
+                height: 100px;
+                width: 600px;
+                border-radius: 20px;
+                background-color:black;
+                color: rgb(245, 229, 186);
+                }
+            #btn1:hover {
+                height: 100px;
+                width: 600px;
+                border-radius: 20px;
+                background-color:white;
+                color: black;
+            }
+            #btn2 {
+                height: 100px;
+                width: 635px;
+                border-radius: 20px;
+                background-color:black;
+                color: white;
+                }
+            #btn2:hover {
+                height: 100px;
+                width: 635px;
+                border-radius: 20px;
+                background-color:white;
+                color: black; 
+            }
+            #btn3 {
+                height: 400px;
+                width: 100px;
+                border-radius: 20px;
+                background-color:black;
+                color: white;
+                margin-right: 250px;
+                }
+            #btn3:hover {
+                height: 400px;
+                width: 100px;
+                border-radius: 20px;
+                background-color:white;
+                color: black;
+                margin-right: 250px;
+            }
+            #btn4 {
+                height: 400px;
+                width: 100px;
+                border-radius: 20px;
+                background-color:black;
+                color: white;
+                margin-left: 785px;
+                }
+            #btn4:hover {
+                height: 400px;
+                width: 100px;
+                border-radius: 20px;
+                background-color:white;
+                color: black;
+                margin-left: 785px;
+            }
+            </style>
+        </body>
+</html>
