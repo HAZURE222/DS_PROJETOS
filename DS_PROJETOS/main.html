@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MarcaViva - Estratégia de Marca</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo-container">
+    <div class="logo-premium" onclick="toggleLogoMenu()">
+      <div class="brand-symbol">MV</div>
+      <span class="brand-name">MarcaViva</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div id="logo-menu-content" class="dropdown-premium">
+      <a href="javascript:void(0)" onclick="showLanding()">🏠 Dashboard</a>
+      <a href="javascript:void(0)" onclick="showForm()">🎨 Identidade Visual</a>
+      <a href="javascript:void(0)" onclick="showLogin()">⚙️ Configurações</a>
+    </div>
+  </div>
+
+  <nav>
+    <a href="javascript:void(0)" onclick="showLanding()">Início</a>
+    <a href="javascript:void(0)" class="login-link" onclick="showLogin()">Login</a>
+    <button class="btn-outline" onclick="showForm()">Começar agora</button>
+  </nav>
+</header>
+
+<!-- PÁGINA 1: LANDING PAGE -->
+<section id="landing" class="page active">
+  <div class="landing-content">
+    <h1>Estratégia que sua marca <span>sente</span>,<br> seu cliente <span>percebe</span>.</h1>
+    <p>Ajudamos pequenas empresas a conquistarem mais clientes através de neuromarketing.</p>
+    <div class="cta-area">
+      <button class="btn-main" onclick="showForm()">Começar agora</button>
+    </div>
+  </div>
+
+  <div class="scroll-content">
+    <h2 class="reveal">Por que escolher a MarcaViva?</h2>
+    <div class="cards-container">
+      <div class="card reveal">
+        <div class="icon">🧠</div>
+        <h3>Inteligência</h3>
+        <p>Neuromarketing aplicado ao seu negócio.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🚀</div>
+        <h3>Rapidez</h3>
+        <p>Sua estratégia pronta em minutos.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">💎</div>
+        <h3>Qualidade</h3>
+        <p>Design premium para sua marca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PÁGINA 2: LOGIN -->
+<section id="login" class="page">
+  <div class="login-box">
+    <button class="btn-back" onclick="showLanding()">← Voltar</button>
+    <h2>Bem-vindo de volta! 👋</h2>
+    <button class="btn-google" onclick="loginComGoogle()">
+      <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google">
+      Entrar com Google
+    </button>
+    <div class="divider">ou use seu e-mail</div>
+    <input type="email" placeholder="E-mail">
+    <input type="password" placeholder="Senha">
+    <button class="btn-main">Entrar</button>
+  </div>
+</section>
+
+<!-- PÁGINA 3: FORMULÁRIO PASSO A PASSO -->
+<section id="form" class="page">
+  <div class="form-container">
+    <div class="steps">
+      <div class="step active">1</div>
+      <div class="step">2</div>
+      <div class="step">3</div>
+    </div>
+    
+    <div class="form-box">
+      <button class="btn-back" onclick="prevStep()">← Voltar</button>
+
+      <div class="step-content active">
+        <h2>Sobre sua empresa</h2>
+        <input type="text" class="form-input" placeholder="Nome da sua marca" required>
+        <input type="text" class="form-input" placeholder="Seu nicho de atuação" required>
+      </div>
+      
+      <div class="step-content">
+        <h2>Seu público</h2>
+        <input type="text" class="form-input" placeholder="Quem é seu cliente?" required>
+        <input type="text" class="form-input" placeholder="Desejo do cliente" required>
+      </div>
+      
+      <div class="step-content">
+        <h2>Quase lá!</h2>
+        <p>Clique abaixo para gerar sua estratégia personalizada.</p>
+      </div>
+
+      <div class="form-footer">
+        <button class="btn-main" onclick="nextStep()">Próximo Passo</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="main.js"></script>
+</body>
+</html>

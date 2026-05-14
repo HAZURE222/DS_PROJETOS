@@ -1,0 +1,190 @@
+/* Reset e Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+.auth-split-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Lado Esquerdo - Imagem */
+.auth-side-text {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  color: white;
+  background: linear-gradient(rgba(0, 20, 60, 0.4), rgba(0, 20, 60, 0.7)), 
+              url('comandantes-dos-Comandos-Conjuntos.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.auth-side-text h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.auth-side-text p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 450px;
+}
+
+/* Lado Direito - Formulário */
+.auth-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Para posicionar o botão de voltar */
+  background-color: #ffffff;
+}
+
+/* Botão Voltar Estilizado */
+.btn-voltar-topo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.btn-voltar-topo:hover {
+  color: #6c4cff;
+  background-color: #f3f0ff;
+}
+
+/* Caixa de Login */
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.login-header {
+  margin-bottom: 32px;
+}
+
+.login-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  color: #777;
+}
+
+/* Campos de Input */
+.input-wrapper {
+  margin-bottom: 20px;
+}
+
+.input-wrapper label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: all 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6c4cff;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(108, 76, 255, 0.1);
+}
+
+/* Botão Entrar */
+.btn-entrar {
+  width: 100%;
+  padding: 16px;
+  background-color: #6c4cff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.btn-entrar:hover {
+  background-color: #5639e6;
+  transform: translateY(-1px);
+}
+
+/* Links Adicionais */
+.links-footer {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.links-footer a {
+  text-decoration: none;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.divider {
+  margin: 15px 0;
+  color: #ddd;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.signup-link {
+  color: #6c4cff !important;
+  font-weight: 700;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .auth-split-container {
+      flex-direction: column;
+  }
+  .auth-side-text {
+      height: 30vh;
+      padding: 40px;
+  }
+  .auth-side-text p { display: none; }
+  .auth-side-text h1 { font-size: 1.8rem; }
+  
+  .btn-voltar-topo {
+      top: 20px;
+      left: 20px;
+  }
+}

@@ -1,0 +1,55 @@
+DOCUMENTAÇÃO TÉCNICA: PROJETO MARCAVIVA
+-------------------------------------------
+1. VISÃO GERAL
+O MarcaViva é uma plataforma web (Single Page Application - SPA) desenvolvida para auxiliar pequenas empresas na criação de estratégias de marca através de Neuromarketing.
+
+2. ARQUITETURA TÉCNICA
+- HTML5: Estruturação semântica.
+- CSS3: Design responsivo e animações (Scroll Reveal).
+- JavaScript (Vanilla): Lógica de navegação e validação de formulários.
+
+3. FUNCIONALIDADES PRINCIPAIS
+- Navegação Dinâmica: Troca de telas sem recarregamento (SPA).
+- Formulário Multi-passos: Coleta de dados segmentada em 3 etapas.
+- Validação em Tempo Real: Impede o avanço de campos vazios com feedback visual.
+- Scroll Inteligente: Elementos surgem suavemente conforme o utilizador desce a página.
+
+4. ESTRUTURA DE ARQUIVOS
+- main.html: Casca principal e seções do site.
+- main.css: Definições visuais e variáveis de cor.
+- main.js: O "cérebro" do projeto (lógica).
+- login.html/css: Módulo de autenticação independente.
+-------------------------------------------
+Gerado automaticamente para documentação de TCC.
+
+
+DICIONÁRIO DE CLASSES E LOGICA DE PROGRAMAÇÃO
+-------------------------------------------------
+1. MAPEAMENTO DE CLASSES (CSS)
+- .page: Define cada tela. Possui 'display: none' por padrão.
+- .active: A classe mágica. Quando aplicada a uma .page, torna-a visível (display: block).
+- .reveal: Marca elementos que devem iniciar invisíveis e deslizar no scroll.
+- .btn-main: Estilo do botão principal (roxo da marca).
+- .btn-outline: Estilo do botão secundário (apenas borda).
+
+2. LÓGICA DO JAVASCRIPT (JS)
+- showPage(id): 
+  1. Remove a classe .active de todas as páginas.
+  2. Adiciona .active apenas na página com o ID solicitado.
+  
+- nextStep():
+  1. Localiza os 'inputs' do passo atual.
+  2. Verifica se estão vazios (trim() === "").
+  3. Se vazios, muda a borda para vermelho.
+  4. Se preenchidos, incrementa a variável 'currentStep'.
+
+- animatedScroll():
+  1. Calcula a distância do elemento até o topo da janela.
+  2. Compara com a altura da tela (window.innerHeight).
+  3. Adiciona a classe .active para disparar a animação CSS.
+
+3. CONEXÃO HTML/CSS/JS
+- HTML: Fornece a estrutura e os gatilhos (ex: onclick).
+- CSS: Fornece o visual e os estados (ex: o que acontece quando algo está .active).
+- JS: Toma a decisão de quando mudar o estado baseado na ação do utilizador.
+-------------------------------------------------
