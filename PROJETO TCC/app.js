@@ -664,7 +664,6 @@ function buildDashboardHTML() {
 
   <!-- Attention Bars + Bottom Row -->
   <div style="display:grid;grid-template-columns:320px 1fr;gap:16px;margin-bottom:16px">
-    @media(max-width:700px){display:block!important}
     <div class="nm-card">
       <div class="nm-card-title">📊 Atenção por Zona</div>
       <div class="nm-attention-list" id="attentionList">
