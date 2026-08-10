@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MarcaViva - Estratégia de Marca</title>
+  <link rel="stylesheet" href="Front-End/main.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo-container">
+    <div class="logo-premium" onclick="toggleLogoMenu()">
+      <div class="brand-symbol">MV</div>
+      <span class="brand-name">MarcaViva</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div id="logo-menu-content" class="dropdown-premium">
+      <a href="painel.html">🏠 Dashboard</a>
+      <a href="criacao.html">🎨 Identidade Visual</a>
+      <a href="javascript:void(0)" onclick="alert('Configurações em desenvolvimento')">⚙️ Configurações</a>
+    </div>
+  </div>
+
+  <nav>
+    <a href="main.html">Início</a>
+    <a href="login.html" class="login-link">Login</a>
+  </nav>
+</header>
+
+<!-- PÁGINA 1: LANDING PAGE -->
+<section id="landing" class="page active">
+  <div class="landing-content">
+    <h1>Estratégia que sua marca <span>sente</span>,<br> seu cliente <span>percebe</span>.</h1>
+    <p>Ajudamos pequenas empresas a conquistarem mais clientes através de neuromarketing.</p>
+    <div class="cta-area">
+      <a class="btn-main" href="criacao.html">Começar agora</a>
+    </div>
+  </div>
+
+  <div class="scroll-content">
+    <h2 class="reveal">Por que escolher a MarcaViva?</h2>
+    <div class="cards-container">
+      <div class="card reveal">
+        <div class="icon">🧠</div>
+        <h3>Inteligência</h3>
+        <p>Neuromarketing aplicado ao seu negócio.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🚀</div>
+        <h3>Rapidez</h3>
+        <p>Sua estratégia pronta em minutos.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">💎</div>
+        <h3>Qualidade</h3>
+        <p>Design premium para sua marca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="Back-End/main.js"></script>
+</body>
+</html>

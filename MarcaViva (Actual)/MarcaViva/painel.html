@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarcaViva - Painel de Inteligência Estratégica</title>
+  <link rel="stylesheet" href="Front-End/painel.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="dashboard-container">
+    
+    <!-- MENU LATERAL UNIFICADO -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-symbol">MV</div>
+        <div class="brand-text">
+          <span>MarcaViva</span>
+          <small>Core Intelligence</small>
+        </div>
+      </div>
+      
+      <nav class="sidebar-menu">
+        <a href="#visao-geral" class="menu-item active" onclick="alternarAbas(event, 'visao-geral')">
+          <i data-lucide="layout-dashboard"></i> Visão Geral
+        </a>
+        <a href="#psico-cores" class="menu-item" onclick="alternarAbas(event, 'psico-cores')">
+          <i data-lucide="palette"></i> Neuro-Cromática
+        </a>
+        <a href="#copys-magneticas" class="menu-item" onclick="alternarAbas(event, 'copys-magneticas')">
+          <i data-lucide="file-text"></i> Copys Magnéticas
+        </a>
+        <a href="#arquitetura-marca" class="menu-item" onclick="alternarAbas(event, 'arquitetura-marca')">
+          <i data-lucide="sparkles"></i> Arquétipo Prático
+        </a>
+        
+        <!-- ABA INTEGRADA DO MENTOR IA -->
+        <a href="#mentor-ia" class="menu-item menu-item-ai" onclick="alternarAbas(event, 'mentor-ia')">
+          <i data-lucide="bot"></i> Mentor IA Especialista
+        </a>
+        
+        <div class="sidebar-footer">
+          <button onclick="gerarPDFCompleto()" class="btn-pdf-sidebar" style="margin-bottom: 8px; width: 100%;">
+            <i data-lucide="download"></i> Exportar Relatório PDF
+          </button>
+          
+          <!-- BOTÃO DE LOGOUT: chama fazerLogout(), que limpa a sessão antes de redirecionar -->
+          <button onclick="fazerLogout()" class="btn-logout-sidebar">
+            <i data-lucide="log-out"></i> Sair do Painel
+          </button>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+      
+      <!-- HEADER DO USUÁRIO DINÂMICO -->
+      <header class="content-header">
+        <div class="header-title-area">
+          <span class="header-pre-title">Workspace / Diagnóstico Ativo</span>
+          <h1>Painel Estratégico: <span id="db-nome-empresa">Carregando...</span></h1>
+          <p>Segmento de mercado mapeado: <strong id="db-nicho-empresa">Carregando...</strong></p>
+        </div>
+        <div class="user-profile">
+          <span class="badge-status"><span class="indicator-dot"></span> Plano Pro Ativo</span>
+        </div>
+      </header>
+
+      <!-- SEÇÃO 1: VISÃO GERAL -->
+      <section id="visao-geral" class="dashboard-section">
+        <div class="card-premium">
+          <div class="card-header">
+            <div class="icon-wrapper"><i data-lucide="brain"></i></div>
+            <h3>Diagnóstico de Tomada de Decisão Subconsciente</h3>
+          </div>
+          <div class="card-body">
+            <p class="lead-text">O mapeamento cognitivo indica que seu público-alvo processa estímulos preferencialmente através do <strong>Sistema 1 (Processamento Rápido/Intuitivo)</strong>. O comportamento de consumo é guiado por gatilhos de validação de status social e mitigação de risco de fricção.</p>
+            
+            <div class="metrics-grid">
+              <div class="metric-box">
+                <span class="metric-title">Retenção de Atenção (Estimada)</span>
+                <div class="metric-value-group">
+                  <span class="metric-value">87%</span>
+                  <span class="metric-trend up">Alto desempenho</span>
+                </div>
+                <div class="progress-bar-mini"><div class="progress-fill" style="width: 87%"></div></div>
+              </div>
+              
+              <div class="metric-box">
+                <span class="metric-title">Gatilho de Alta Conversão</span>
+                <span class="metric-value-text">Prova Social Ativa</span>
+                <p class="metric-subtext">Necessidade subconsciente de validação coletiva.</p>
+              </div>
+              
+              <div class="metric-box">
+                <span class="metric-title">Conexão de Marca</span>
+                <span class="metric-value-text">Nível Aspiracional</span>
+                <p class="metric-subtext">O produto deve ser posicionado como um atalho de evolução.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2: NEURO-CROMÁTICA -->
+      <section id="psico-cores" class="dashboard-section section-hidden">
+        <div class="card-premium">
+          <div class="card-header">
+            <div class="icon-wrapper"><i data-lucide="sliders"></i></div>
+            <h3>Arquitetura Cromática de Conversão</h3>
+          </div>
+          <div class="card-body">
+            <p class="section-desc">Diretrizes visuais calibradas para reduzir o esforço cognitivo do usuário, aumentando o valor percebido nas interfaces digitais.</p>
+            
+            <div class="palette-display">
+              <div class="color-row">
+                <div class="color-swatch" style="background-color: #6366f1;"></div>
+                <div class="color-info">
+                  <div class="color-meta"><strong>#6366f1</strong> <span class="badge-ratio">Dominante (60%)</span></div>
+                  <p>Azul Tecnológico: Conecta-se à percepção de infraestrutura, segurança e autoridade.</p>
+                </div>
+              </div>
+              
+              <div class="color-row">
+                <div class="color-swatch" style="background-color: #a855f7;"></div>
+                <div class="color-info">
+                  <div class="color-meta"><strong>#a855f7</strong> <span class="badge-ratio">Acento (30%)</span></div>
+                  <p>Roxo Elétrico: Direciona o foco visual para elements de conversão de mercado.</p>
+                </div>
+              </div>
+              
+              <div class="color-row">
+                <div class="color-swatch" style="background-color: #0f172a;"></div>
+                <div class="color-info">
+                  <div class="color-meta"><strong>#0f172a</strong> <span class="badge-ratio">Contraste (10%)</span></div>
+                  <p>Dark Slate: Utilizado para ancorar a legibilidade estrutural.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 3: COPYS MAGNÉTICAS -->
+      <section id="copys-magneticas" class="dashboard-section section-hidden">
+        <div class="card-premium">
+          <div class="card-header">
+            <div class="icon-wrapper"><i data-lucide="message-square"></i></div>
+            <h3>Estruturas de Copywriting Psicológico</h3>
+          </div>
+          <div class="card-body">
+            <p class="section-desc">Matrizes de texto projetadas para quebrar objeções lógicas antes que elas alcancem o neocórtex do cliente.</p>
+            
+            <div class="copy-card">
+              <div class="copy-card-header">
+                <h5>Anúncio de Alta Conversão (Tráfego Pago)</h5>
+                <button class="btn-copy" onclick="copiarTexto(this)"><i data-lucide="copy"></i> Copiar</button>
+              </div>
+              <div class="copy-card-body" id="copy-anuncio">
+                "Enquanto o mercado tradicional satura o público com processos burocráticos, marcas que lideram focam no alívio imediato da fricção. Desenhamos a transição exata para o seu próximo nível operacional. Conheça a metodologia."
+              </div>
+            </div>
+
+            <div class="copy-card">
+              <div class="copy-card-header">
+                <h5>Linha Editorial / Posicionamento de Perfil</h5>
+                <button class="btn-copy" onclick="copiarTexto(this)"><i data-lucide="copy"></i> Copiar</button>
+              </div>
+              <div class="copy-card-body" id="copy-perfil">
+                "Redefinindo os padrões de entrega através de inteligência estratégica aplicada. Soluções estruturadas para resultados mensuráveis. Explore nossos pilares de atuação no link abaixo."
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4: ARQUÉTIPO DA MARCA -->
+      <section id="arquitetura-marca" class="dashboard-section section-hidden">
+        <div class="card-premium">
+          <div class="card-header">
+            <div class="icon-wrapper"><i data-lucide="shield-check"></i></div>
+            <h3>Alinhamento de Arquétipo: O Mago / O Criador</h3>
+          </div>
+          <div class="card-body">
+            <p class="section-desc">Sua marca deve atuar como o agente catalisador da transformação. A comunicação institucional vende a visão do produto finalizado.</p>
+            
+            <div class="rules-container">
+              <div class="rule-column do">
+                <div class="rule-title"><i data-lucide="check-circle-2"></i> Diretrizes Recomendadas</div>
+                <ul>
+                  <li>Evidencie os processos de engenharia intelectual e bastidores de alta qualidade técnica.</li>
+                  <li>Incorpore termos de poder semântico estável: <em>Visão, Arquitetura, Evolução, Engenharia</em>.</li>
+                </ul>
+              </div>
+              <div class="rule-column dont">
+                <div class="rule-title"><i data-lucide="x-circle"></i> Restrições de Marca</div>
+                <ul>
+                  <li>Evite apelos baseados unicamente em descontos agressivos; isso dilui o valor intangível.</li>
+                  <li>Elimine layouts sobrecarregados ou amadores que causem fadiga visual imediata.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 5: ABA DO CHAT MENTOR IA -->
+      <section id="mentor-ia" class="dashboard-section section-hidden">
+        <div class="card-premium full-chat-card">
+          <div class="card-header chat-header-premium">
+            <div class="icon-wrapper ai-icon"><i data-lucide="bot"></i></div>
+            <div>
+              <h3>Mentor Estratégico AI</h3>
+              <p class="chat-status"><span class="dot-online"></span> Especialista em Neuromarketing online e contextualizado</p>
+            </div>
+          </div>
+          
+          <div class="chat-workspace">
+            <div class="chat-sidebar-suggestions">
+              <h5>Consultas Sugeridas</h5>
+              <p>Clique em um tópico para iniciar a análise subconsciente:</p>
+              <div class="suggestion-tags">
+                <button onclick="perguntaPronta('Como aplicar meu arquétipo no Instagram?')">📱 Estratégia de Instagram</button>
+                <button onclick="perguntaPronta('Minha paleta de cores funciona para criativos de tráfego pago?')">🎨 Cores em Anúncios</button>
+                <button onclick="perguntaPronta('Como quebrar a objeção de preço alto usando gatilhos?')">💰 Objeção de Preço</button>
+                <button onclick="perguntaPronta('Me dê uma ideia de conteúdo focado no Sistema 1 do cérebro')">🧠 Ideia de Conteúdo (Sistema 1)</button>
+              </div>
+            </div>
+      
+            <div class="chat-main-area">
+              <div class="chat-history-container" id="chatHistorico">
+                <div class="msg-box bot">
+                  <div class="msg-avatar">AI</div>
+                  <div class="msg-text">
+                    Olá! Cruzei os dados do perfil da sua empresa com nossos modelos de comportamento de consumo. Estou pronto para detalhar suas copys, refinar sua comunicação ou sugerir postagens estratégicas. Como posso te ajudar agora?
+                  </div>
+                </div>
+              </div>
+              
+              <div class="chat-input-bar">
+                <input type="text" id="inputMensagemIA" placeholder="Digite sua dúvida de posicionamento ou mercado..." onkeypress="verificarTecla(event)">
+                <button onclick="enviarMensagemLivreIA()" class="btn-send-chat">
+                  <span>Enviar</span> <i data-lucide="send"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="Back-End/painel.js"></script>
+</body>
+</html>

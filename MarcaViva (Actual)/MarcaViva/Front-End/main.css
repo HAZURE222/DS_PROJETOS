@@ -1,0 +1,547 @@
+/* ==========================================================================
+   MARCAVIVA — LANDING / SPA (main.html)
+   Mesmo sistema visual do painel e do login
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --indigo: #6366f1;
+  --indigo-dark: #4f46e5;
+  --purple: #a855f7;
+  --slate-950: #0f172a;
+  --slate-900: #141d35;
+
+  --bg: #f4f5fb;
+  --surface: #ffffff;
+  --border: #e5e7f3;
+
+  --text-primary: #12142b;
+  --text-secondary: #5b6178;
+  --text-muted: #8b90a6;
+
+  --danger: #ef4444;
+
+  --gradient-brand: linear-gradient(135deg, var(--indigo) 0%, var(--purple) 100%);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+
+/* ==========================================================================
+   PÁGINAS (SPA) — .page / .active conforme a documentação do projeto
+   ========================================================================== */
+
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.35s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page.active { animation: none; }
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+header.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(244, 245, 251, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-container { position: relative; }
+
+.logo-premium {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.brand-symbol {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.chevron {
+  font-size: 11px;
+  color: var(--text-muted);
+  transition: transform 0.15s ease;
+}
+
+.logo-premium:hover .chevron { transform: translateY(1px); }
+
+.dropdown-premium {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 210px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.05), 0 16px 32px -12px rgba(15, 23, 42, 0.16);
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logo-container:hover .dropdown-premium,
+.logo-container:focus-within .dropdown-premium {
+  display: flex;
+}
+
+.dropdown-premium a {
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background 0.15s ease;
+}
+
+.dropdown-premium a:hover { background: var(--bg); }
+
+header.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+header.navbar nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: opacity 0.15s ease;
+}
+
+header.navbar nav a:hover { opacity: 0.7; color: var(--text-primary); }
+
+header.navbar nav .login-link {
+  background: var(--gradient-brand);
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 1;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+header.navbar nav .login-link:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  opacity: 1;
+  color: #fff;
+}
+
+/* ==========================================================================
+   LANDING — HERO
+   ========================================================================== */
+
+#landing { padding: 0 0 80px; position: relative; overflow: hidden; }
+
+#landing::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 520px;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.35) 0, transparent 2px),
+    radial-gradient(circle at 75% 15%, rgba(168, 85, 247, 0.28) 0, transparent 2px),
+    radial-gradient(circle at 50% 40%, rgba(99, 102, 241, 0.22) 0, transparent 2px),
+    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+  background-size: auto, auto, auto, 44px 44px, 44px 44px;
+  mask-image: radial-gradient(circle at 50% 15%, #000 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.landing-content {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 110px 24px 70px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.landing-content h1 {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+}
+
+.landing-content h1 span {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.landing-content > p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+.cta-area { display: flex; justify-content: center; }
+
+.btn-main {
+  padding: 15px 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px -10px rgba(99, 102, 241, 0.55);
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-main:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.6); }
+.btn-main:active { transform: translateY(0); }
+
+/* ==========================================================================
+   SCROLL REVEAL — "Por que escolher a MarcaViva?"
+   ========================================================================== */
+
+.scroll-content {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+  text-align: center;
+}
+
+.scroll-content h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 40px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -14px rgba(15, 23, 42, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.05), 0 20px 36px -16px rgba(99, 102, 241, 0.24);
+}
+
+.card .icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Estado inicial do reveal: some a documentação descreve que o JS
+   compara a posição do elemento com a janela e adiciona .active
+   para disparar a animação — o CSS define os dois estados aqui. */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.active { transition: none; transform: none; opacity: 1; }
+}
+
+/* ==========================================================================
+   PÁGINA 2 — LOGIN EMBUTIDO (dentro da SPA)
+   ========================================================================== */
+
+#login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.08) 0, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.08) 0, transparent 45%),
+    var(--bg);
+}
+
+#login .login-box {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px 32px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -14px rgba(99, 102, 241, 0.18);
+}
+
+#login .login-box h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 22px;
+  text-align: center;
+}
+
+.btn-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-back:hover { background: var(--bg); color: var(--indigo-dark); }
+
+.btn-google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background 0.15s ease;
+}
+
+.btn-google img { width: 18px; height: 18px; }
+.btn-google:hover { background: var(--bg); }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+#login input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+}
+
+#login input:focus { outline: none; border-color: var(--indigo); background: #fff; }
+
+#login .btn-main { width: 100%; }
+
+/* ==========================================================================
+   PÁGINA 3 — FORMULÁRIO MULTI-PASSOS
+   ========================================================================== */
+
+#form {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.form-container { width: 100%; max-width: 480px; }
+
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.step {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.step.active {
+  background: var(--gradient-brand);
+  border-color: transparent;
+  color: #fff;
+}
+
+.form-box {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 44px 32px 32px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -14px rgba(99, 102, 241, 0.18);
+}
+
+.step-content { display: none; }
+.step-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+.step-content h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+
+.step-content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: border-color 0.15s ease;
+}
+
+.form-input:focus { outline: none; border-color: var(--indigo); background: #fff; }
+
+/* Validação em tempo real — descrita na documentação:
+   campo vazio ao avançar => borda vermelha */
+.form-input.input-erro {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.form-footer { margin-top: 8px; }
+.form-footer .btn-main { width: 100%; }
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  header.navbar { padding: 14px 20px; }
+  .landing-content { padding: 80px 20px 50px; }
+  .landing-content h1 { font-size: 30px; }
+  .cards-container { grid-template-columns: 1fr; }
+}

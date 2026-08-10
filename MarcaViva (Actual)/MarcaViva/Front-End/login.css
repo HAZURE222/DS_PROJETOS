@@ -1,0 +1,355 @@
+/* ==========================================================================
+   MARCAVIVA — LOGIN
+   Mesmo sistema visual do painel (neuro-cromático: Indigo / Roxo / Slate)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --indigo: #6366f1;
+  --indigo-dark: #4f46e5;
+  --purple: #a855f7;
+  --slate-950: #0f172a;
+  --slate-900: #141d35;
+
+  --bg: #f4f5fb;
+  --surface: #ffffff;
+  --border: #e5e7f3;
+
+  --text-primary: #12142b;
+  --text-secondary: #5b6178;
+  --text-muted: #8b90a6;
+
+  --danger: #ef4444;
+
+  --gradient-brand: linear-gradient(135deg, var(--indigo) 0%, var(--purple) 100%);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+
+/* ==========================================================================
+   LAYOUT SPLIT
+   ========================================================================== */
+
+.auth-split-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* Lado esquerdo — narrativa da marca */
+.auth-side-text {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.35) 0, transparent 2px),
+    radial-gradient(circle at 70% 45%, rgba(168, 85, 247, 0.3) 0, transparent 2px),
+    radial-gradient(circle at 35% 75%, rgba(99, 102, 241, 0.25) 0, transparent 2px),
+    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.22) 0, transparent 2px),
+    linear-gradient(160deg, var(--slate-950) 0%, var(--slate-900) 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+/* Textura de grade sutil, reforçando a leitura "tecnológica" do painel */
+.auth-side-text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.overlay-content { max-width: 440px; position: relative; z-index: 1; text-align: center; }
+
+/* ==========================================================================
+   HUD GRÁFICO — ilustração decorativa em SVG (radar / anel de dados)
+   ========================================================================== */
+
+.hud-graphic {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 28px;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 24px rgba(99, 102, 241, 0.25));
+}
+
+.hud-graphic svg { display: block; width: 100%; height: auto; }
+
+.hud-ring-dashed {
+  transform-origin: 160px 160px;
+  animation: hudSpin 40s linear infinite;
+}
+
+.hud-ticks {
+  transform-origin: 160px 160px;
+  animation: hudSpin 90s linear infinite reverse;
+}
+
+@keyframes hudSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-ring-dashed, .hud-ticks { animation: none; }
+}
+
+.eyebrow-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--purple);
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.overlay-content h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+}
+
+.overlay-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #b6bbe0;
+  margin: 0;
+}
+
+/* Lado direito — formulário */
+.auth-form-side {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--bg);
+}
+
+.btn-voltar-topo {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.15s ease;
+}
+
+.btn-voltar-topo:hover {
+  background: var(--surface);
+  color: var(--indigo-dark);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 12px -6px rgba(15, 23, 42, 0.1);
+}
+
+/* ==========================================================================
+   CARTÃO DE LOGIN
+   ========================================================================== */
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -14px rgba(99, 102, 241, 0.18);
+}
+
+.login-header { margin-bottom: 28px; }
+
+.login-header h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.login-header p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.banner-sucesso {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  color: #16a34a;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.msg-erro-form {
+  color: #ef4444;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 14px;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.input-wrapper { margin-bottom: 18px; }
+
+.input-wrapper label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: var(--indigo);
+  background: #fff;
+}
+
+.btn-entrar {
+  width: 100%;
+  padding: 13px;
+  margin-top: 4px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px -10px rgba(99, 102, 241, 0.6);
+  transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-entrar:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 12px 26px -10px rgba(99, 102, 241, 0.65); }
+.btn-entrar:active { transform: translateY(1px); }
+.btn-entrar:disabled { opacity: 0.75; cursor: not-allowed; transform: none; }
+
+.links-footer {
+  margin-top: 22px;
+  text-align: center;
+}
+
+.links-footer a {
+  font-size: 13px;
+  color: var(--indigo-dark);
+  font-weight: 500;
+}
+
+.links-footer a:hover { text-decoration: underline; }
+
+.links-footer .divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.links-footer .divider::before,
+.links-footer .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.links-footer p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.signup-link { font-weight: 600; }
+
+/* Feedback de erro (o elemento já usa estilo inline no HTML,
+   isto garante consistência caso o inline seja removido depois) */
+#erroLoginReal {
+  font-family: var(--font-body);
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-box { animation: none !important; }
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .auth-split-container { grid-template-columns: 1fr; }
+  .auth-side-text { display: none; }
+  .btn-voltar-topo { top: 20px; left: 20px; }
+}
